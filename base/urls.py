@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 
 
-## here's all the url pattern why which views.py and  templates are connected
+## here's all the urls why which views.py and  templates are connected
 
 urlpatterns = [
     path('', views.home, name='home'),

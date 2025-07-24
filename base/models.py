@@ -15,9 +15,9 @@ class Topic(models.Model):
     
 
 
-class Room(models.Model):
-    host = models.ForeignKey(settings.AUTH_USER_MODEL
-, on_delete=models.SET_NULL, null=True)
+class Room(models.Model): 
+    host = models.ForeignKey(settings.AUTH_USER_MODEL                ## we are using the "User" model through the setting , and here host is using as a foreign key to connect with the 
+, on_delete=models.SET_NULL, null=True)                                      ## "Topic" and "Message" model
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
@@ -31,7 +31,7 @@ class Room(models.Model):
     
     
     def __str__(self):
-        return self.name
+        return self.name              
     
     
     

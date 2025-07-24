@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 
-
+## we are creating forms through the model which we have built
 
 class RoomForm(ModelForm):
     class Meta:
@@ -17,7 +17,7 @@ class RoomForm(ModelForm):
 class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = [ 'avatar', 'name', 'username', 'email', 'bio']
+        fields = [ 'avatar', 'name', 'username', 'email', 'bio']         
         
         
 class MyUserCreationForm(UserCreationForm):
