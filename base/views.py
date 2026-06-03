@@ -31,7 +31,7 @@ def login_page(request):
         
         try:
             user = User.objects.get(email=email)
-        except:
+        except User.DoesNotExist:
             messages.error(request, 'User does not exist')
             
         # Authenticate user
@@ -165,7 +165,7 @@ def update_room(request, pk):
         topic, created = Topic.objects.get_or_create(name=topic_name)
         form = RoomForm(request.POST, instance=room)
         room.name = request.POST.get('name')
-        room.name = topic
+        room.topic = topic
         room.description = request.POST.get('description')
         room.save()
         
