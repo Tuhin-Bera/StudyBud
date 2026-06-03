@@ -26,14 +26,12 @@ def login_page(request):
         return redirect('home')
     
     if request.method == 'POST':
-        email = request.POST.get('email').lower()
+        email = request.POST.get('email')
         password = request.POST.get('password')
         
-        try:
-            user = User.objects.get(email=email)
-        except:
-            messages.error(request, 'User does not exist')
-            
+        if email:
+            email = email.lower()
+        
         # Authenticate user
         user = authenticate(request, email=email, password=password)
         if user is not None:
@@ -165,7 +163,7 @@ def update_room(request, pk):
         topic, created = Topic.objects.get_or_create(name=topic_name)
         form = RoomForm(request.POST, instance=room)
         room.name = request.POST.get('name')
-        room.name = topic
+        room.topic = topic
         room.description = request.POST.get('description')
         room.save()
         
